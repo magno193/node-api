@@ -10,5 +10,11 @@ module.exports = {
 
         // Retornar em uma estrutura JSON
         return response.json(products)
+    },
+    // Cria um novo produto pela requisição
+    async store(require, response) {
+        const product = await Product.create(require.body);
+
+        return response.json(product);
     }
-}
+};
