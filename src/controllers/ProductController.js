@@ -40,11 +40,12 @@ module.exports = {
         return response.json(product);
     },
 
+    // Apaga um produto pelo o seu id
     async destroy(require, response) {
 
-        const product = await Product.findByIdAndDelete(
-            require.params.id,
-            require.body
-        )
+        await Product.findByIdAndRemove(require.params.id)
+
+        // Retorna uma reposta de sucesso sem conteúdo
+        return response.send();
     }
 };
