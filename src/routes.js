@@ -3,9 +3,11 @@ const routes = express.Router()
 
 const ProductController = require('../src/controllers/ProductController')
 
-// Chama o método index na rota products
+// Cria rotas e chama uma controller
 routes.get('/products', ProductController.index);
+routes.get('/products/:id', ProductController.show);
 routes.post('/products', ProductController.store);
+routes.put('/products/:id', ProductController.update)
 
 // Exportar rotas para ser usado em server.js
 module.exports = routes;
