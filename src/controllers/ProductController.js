@@ -6,7 +6,9 @@ const Product = mongoose.model('Product');
 module.exports = {
     // Lista todos os produtos da base de dados
     async index(require, response) {
-        const products = await Product.find();
+        const { page = 1 } = req.query
+        // paginate separa em páginas
+        const products = await Product.paginate({}, {page, limit: 10});
 
         // Retornar em uma estrutura JSON
         return response.json(products)
